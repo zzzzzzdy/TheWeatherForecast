@@ -35,7 +35,6 @@ public class HttpConnect {
                     connection.setConnectTimeout(6000);//设置连接超时时间
                     connection.setReadTimeout(6000);//读取超时时间
                     connection.setRequestProperty("Content-type", "application/json");//设置请求头
-//                    Log.d("难受啊马飞", "run: " + connection.getHeaderField(""));
                     inputStream=connection.getInputStream();//获取输入流
 
                     reader=new BufferedReader(new InputStreamReader(inputStream));//转化成缓冲字符流
