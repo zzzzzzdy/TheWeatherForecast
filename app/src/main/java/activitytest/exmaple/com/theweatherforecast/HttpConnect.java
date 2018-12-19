@@ -23,7 +23,7 @@ public class HttpConnect {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.d("Http", "run:进行网络连接 ");
+
                 HttpURLConnection connection=null;
                 BufferedReader reader;
                 InputStream inputStream=null;
