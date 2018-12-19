@@ -10,3 +10,4 @@
 ![效果图](https://github.com/zzzzzzdy/TheWeatherForecast/blob/master/img2.jpg)
 ![效果图](https://github.com/zzzzzzdy/TheWeatherForecast/blob/master/img3.jpg)
 ![效果图](https://github.com/zzzzzzdy/TheWeatherForecast/blob/master/img4.jpg)
+![效果图](https://github.com/zzzzzzdy/TheWeatherForecast/blob/master/img5.jpg)
