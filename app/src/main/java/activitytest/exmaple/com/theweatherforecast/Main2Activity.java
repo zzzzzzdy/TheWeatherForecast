@@ -2,6 +2,8 @@ package activitytest.exmaple.com.theweatherforecast;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,10 +22,25 @@ public class Main2Activity extends AppCompatActivity {
 
 
     List<Data> datas=new ArrayList<Data>();
+
     RecyclerAdapter recyclerAdapter;
     RecyclerView recyclerView;
     TextView textView;
+    TextView textViewTwo;
     String city;
+    String ganmao;
+    String wendu;
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            ganmao = msg.getData().getString("ganmao");
+            wendu = msg.getData().getString("wendu");
+            textViewTwo = findViewById(R.id.tv_two);
+            textViewTwo.setText("平均温度："+wendu+"度   "+"温馨提示:"+ganmao);
+
+            return false;
+        }
+    });
 
 
 
@@ -37,8 +54,10 @@ public class Main2Activity extends AppCompatActivity {
 
 
         initdata();
+
         textView = findViewById(R.id.tv_one);
         textView.setText(city);
+
         recyclerView=findViewById(R.id.recyclerview);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         recyclerAdapter=new RecyclerAdapter(datas,this);
@@ -67,7 +86,15 @@ public class Main2Activity extends AppCompatActivity {
 
 
             JSONArray jsonArray=new JSONArray(jsonObjectOne.getString("forecast"));
-//            Log.d("qqqqq", jsonObject.getString("data"));
+            String ganmao = jsonObjectOne.getString("ganmao");
+            String wendu = jsonObjectOne.getString("wendu");
+            Message message = Message.obtain();
+            Bundle bundle = new Bundle();
+            bundle.putString("ganmao",ganmao);
+            bundle.putString("wendu",wendu);
+            message.setData(bundle);
+            handler.sendMessage(message);
+
 
 
 
